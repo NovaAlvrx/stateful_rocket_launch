@@ -67,6 +67,23 @@ class _CounterWidgetState extends State<CounterWidget> {
                 '$_counter',
                 style: TextStyle(fontSize: 50.0, color: _textColor()),
               ),
+              child: _counter == 100
+                  ? Column(
+                      children: [
+                        Image.network(
+                          'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2FqaWJkYnNkeXhhZmo4Y3Q3NTFyeGh3Z3puZ3hmYnl3OWl4N2plcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/5G1VDKTWdvuVFa3TaM/giphy.gif',
+                          height: 200,
+                        ),
+                        Text(
+                          'LIFTOFF!',
+                          style: TextStyle(fontSize: 50.0, color: Colors.blue),
+                        ),
+                      ],
+                    )
+                  : Text(
+                      '$_counter',
+                      style: TextStyle(fontSize: 50.0),
+                    ),
             ),
           ),
           // Add a slider to adjust the counter value
@@ -101,6 +118,15 @@ class _CounterWidgetState extends State<CounterWidget> {
               });
             },
             child: const Text('Abort'),
+          ),
+          // reset button
+          ElevatedButton(
+            onPressed: () {
+              setState(() {
+                _counter = 0;
+              });
+            },
+            child: const Text('Reset'),
           ),
         ],
       ),
