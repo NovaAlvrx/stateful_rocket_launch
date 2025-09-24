@@ -29,6 +29,18 @@ class _CounterWidgetState extends State<CounterWidget> {
   //set counter value
   int _counter = 0;
 
+  // returns the outline color based on the current counter value
+  Color _outlineColor() {
+    if (_counter >= 80) return Colors.green;
+    if (_counter >= 50) return Colors.yellow;
+    return Colors.red;
+  }
+
+  //text color
+  Color _textColor() {
+    return Colors.white;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,13 +51,21 @@ class _CounterWidgetState extends State<CounterWidget> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          // Display the current counter value in a box
           Center(
             child: Container(
-              color: Colors.blue, 
+              width: 200,
+              height: 120,
+              alignment: Alignment.center,
+              padding: const EdgeInsets.all(16.0),
+              decoration: BoxDecoration(
+                color: _outlineColor(),
+                borderRadius: BorderRadius.circular(8.0),
+              ),
               child: Text(
-                //to displays current number
+                // to display current number
                 '$_counter',
-                style: TextStyle(fontSize: 50.0),
+                style: TextStyle(fontSize: 50.0, color: _textColor()),
               ),
             ),
           ),
