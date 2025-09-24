@@ -61,6 +61,14 @@ class _CounterWidgetState extends State<CounterWidget> {
             activeColor: Colors.blue,
             inactiveColor: Colors.red,
           ),
+          ElevatedButton(
+            onPressed: () {
+              setState(() {
+                _counter = 0;
+              });
+            },
+            child: Text('Reset'),
+          ),
         ],
       ),
     );
