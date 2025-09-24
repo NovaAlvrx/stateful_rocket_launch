@@ -29,6 +29,18 @@ class _CounterWidgetState extends State<CounterWidget> {
   //set counter value
   int _counter = 0;
 
+  // returns the outline color based on the current counter value
+  Color _outlineColor() {
+    if (_counter >= 80) return Colors.green;
+    if (_counter >= 50) return Colors.yellow;
+    return Colors.red;
+  }
+
+  //text color
+  Color _textColor() {
+    return Colors.white;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,8 +51,22 @@ class _CounterWidgetState extends State<CounterWidget> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          // Display the current counter value in a box
           Center(
             child: Container(
+              width: 200,
+              height: 120,
+              alignment: Alignment.center,
+              padding: const EdgeInsets.all(16.0),
+              decoration: BoxDecoration(
+                color: _outlineColor(),
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: Text(
+                // to display current number
+                '$_counter',
+                style: TextStyle(fontSize: 50.0, color: _textColor()),
+              ),
               child: _counter == 100
                   ? Column(
                       children: [
@@ -60,6 +86,7 @@ class _CounterWidgetState extends State<CounterWidget> {
                     ),
             ),
           ),
+          // Add a slider to adjust the counter value
           Slider(
             min: 0,
             max: 100,
@@ -72,6 +99,26 @@ class _CounterWidgetState extends State<CounterWidget> {
             activeColor: Colors.blue,
             inactiveColor: Colors.red,
           ),
+          // Add a button to increment the counter
+          SizedBox(height: 16.0),
+          ElevatedButton(
+            onPressed: () {
+              setState(() {
+                if (_counter < 100) _counter += 1;
+              });
+            },
+            child: const Text('Ignite'),
+          ),
+          // Add "Decrement" button
+          SizedBox(height: 16.0),
+          ElevatedButton(
+            onPressed: () {
+              setState(() {
+                if (_counter > 0) _counter -= 1;
+              });
+            },
+            child: const Text('Abort'),
+          ),
           // reset button
           ElevatedButton(
             onPressed: () {
@@ -79,7 +126,7 @@ class _CounterWidgetState extends State<CounterWidget> {
                 _counter = 0;
               });
             },
-            child: Text('Reset'),
+            child: const Text('Reset'),
           ),
         ],
       ),
