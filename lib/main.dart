@@ -41,7 +41,7 @@ class _CounterWidgetState extends State<CounterWidget> {
         children: [
           Center(
             child: Container(
-              color: Colors.blue,
+              color: Colors.blue, 
               child: Text(
                 //to displays current number
                 '$_counter',
@@ -49,6 +49,7 @@ class _CounterWidgetState extends State<CounterWidget> {
               ),
             ),
           ),
+          // Add a slider to adjust the counter value
           Slider(
             min: 0,
             max: 100,
@@ -60,6 +61,26 @@ class _CounterWidgetState extends State<CounterWidget> {
             },
             activeColor: Colors.blue,
             inactiveColor: Colors.red,
+          ),
+          // Add a button to increment the counter
+          SizedBox(height: 16.0),
+          ElevatedButton(
+            onPressed: () {
+              setState(() {
+                if (_counter < 100) _counter += 1;
+              });
+            },
+            child: const Text('Ignite'),
+          ),
+          // Add "Decrement" button
+          SizedBox(height: 16.0),
+          ElevatedButton(
+            onPressed: () {
+              setState(() {
+                if (_counter > 0) _counter -= 1;
+              });
+            },
+            child: const Text('Abort'),
           ),
         ],
       ),
