@@ -45,9 +45,7 @@ class _CounterWidgetState extends State<CounterWidget> {
           // Countdown / Liftoff display
           Center(
             child: Container(
-              width: 220,
-              height: 140,
-              alignment: Alignment.center,
+              width: 260,
               padding: const EdgeInsets.all(16.0),
               decoration: BoxDecoration(
                 color: _counter == 100 ? Colors.transparent : _outlineColor(),
@@ -59,15 +57,18 @@ class _CounterWidgetState extends State<CounterWidget> {
                       children: [
                         Image.network(
                           'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2FqaWJkYnNkeXhhZmo4Y3Q3NTFyeGh3Z3puZ3hmYnl3OWl4N2plcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/5G1VDKTWdvuVFa3TaM/giphy.gif',
-                          height: 150,
+                          height: 180,
+                          fit: BoxFit.contain,
                         ),
-                        const SizedBox(height: 12),
+                        const SizedBox(height: 20),
                         Text(
                           'LIFTOFF!',
+                          textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 36,
+                            fontSize: 40,
                             fontWeight: FontWeight.bold,
-                            color: Colors.blue[800],
+                            color: Colors.blue[900],
+                            letterSpacing: 2,
                           ),
                         ),
                       ],
